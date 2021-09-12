@@ -25,7 +25,12 @@ function Note(props) {
       )}
       {isEdit && (
         <>
-          <input name="title" onChange={change} value={newNote.title} />
+          <input
+            name="title"
+            autoComplete="off"
+            onChange={change}
+            value={newNote.title}
+          />
           <textarea
             name="content"
             onChange={change}
