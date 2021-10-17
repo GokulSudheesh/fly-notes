@@ -9,7 +9,7 @@ function Note(props) {
     title: props.title,
     content: props.content,
   });
-  if (newNote === undefined){
+  if (typeof(newNote) === "undefined"){
     // If the note was deleted.
     editNote({
       title: props.title,
@@ -36,12 +36,12 @@ function Note(props) {
             name="title"
             autoComplete="off"
             onChange={change}
-            value={props.title}
+            value={newNote.title}
           />
           <textarea
             name="content"
             onChange={change}
-            value={props.content}
+            value={newNote.content}
             rows="5"
           />
         </>
