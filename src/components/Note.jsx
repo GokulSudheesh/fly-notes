@@ -9,6 +9,13 @@ function Note(props) {
     title: props.title,
     content: props.content,
   });
+  if (newNote === undefined){
+    // If the note was deleted.
+    editNote({
+      title: props.title,
+      content: props.content,
+    });
+  }
 
   function change(event) {
     const { name, value } = event.target;
@@ -29,18 +36,22 @@ function Note(props) {
             name="title"
             autoComplete="off"
             onChange={change}
-            value={newNote.title}
+            value={props.title}
           />
           <textarea
             name="content"
             onChange={change}
-            value={newNote.content}
+            value={props.content}
             rows="5"
           />
         </>
       )}
       {!isEdit && (
-        <button onClick={props.delete}>
+        <button onClick={() => {
+          // Change the state if the deleted note as undefined
+          editNote(undefined);
+          props.delete();
+        }}>
           <DeleteOutlineIcon />
         </button>
       )}
